@@ -163,7 +163,7 @@ iOS개발자들에게 필요한 자료들을 정리하고 있는 중입니다.
   > 
   > **⚠️ 관련된 코드블럭들을 분리하여 관리할 수 있습니다.**
 
-
+- Class/ struct/ enum 차이점과 사용하는 나의 기준에 대해 설명하시오.
 
 - 접근 제어자의 종류엔 어떤게 있는지 설명하시오
 
@@ -202,27 +202,52 @@ iOS개발자들에게 필요한 자료들을 정리하고 있는 중입니다.
    >
    >- *이니셜라이저 위임으로, `self.init`이 호출을 하기 이전에는 self에 접근 할 수 없으므로, designated init의 super와는 반대로 먼저 self.init을 호출해야한다.*
    >
-   >✅ required init은 해당 타입의 서브클래스들에게 특정 init의 구현을 강제하는 이니셜라이저이다.
+   >**✅ required init은 해당 타입의 서브클래스들에게 특정 init의 구현을 강제하는 이니셜라이저이다.**
 
-   >모든 초기화는 아래의 단계를 거친다.
+   >**모든 초기화는 아래의 단계를 거친다.**
    >
-   >1. Designated init 이 호출된다 - convenience init 을 통한 간접호출도 포함된다
-   >2. 초기화된 self.prop 을 수정할 기회가 주어진다.
+   >1. *Designated init 이 호출된다 - convenience init 을 통한 간접호출도 포함된다*
+   >2. *초기화된 self.prop 을 수정할 기회가 주어진다.*
 
-- POP에 대해서 설명하시오.
+- 프로토콜 지향 프로그래밍에 대해서 설명하시오.
 
 ## ARC
 - ARC란 무엇인지 설명하시오.
+
+  >**✅ Swift에서는 메모리관리를 참조카운트를 통해서 하는데, 이것을 자동으로 계산해주는 메모리관리 방법이다.**
+
 - Retain Count 방식에 대해 설명하시오.
+
+  > **✅ 해당 객체를 다른 곳에서 참조하게 되면 retain count 가 증가하고, 참조를 마치게 되면 retain count를 감소시킨다.** 
+  >
+  > ✅ **객체의 retain count 가 0 이라면 해당 객체에 접근할 수 없기때문에, 더 이상 사용되지 않을 것이라고 판단해서 메모리에서 해제합니다.**
+
 - Strong 과 Weak 참조 방식에 대해 설명하시오.
+
+  > **✅  Strong 은 객체를 참조하며, 참조카운트를 1 증가시킨다. 그러므로 객체가 메모리에서 해제되지 않음을 보장할 수 있다.**
+  >
+  > **✅  Weak은 참조를 하되, 참조 카운트는 증가시키지 않아서, nil 로 바뀔 수 있는 가능성을 가지고 있다. 그래서 Optional과 var 을 사용한다.**
+
+- Unowned 와 weak 의 차이점에 대해 설명하시오.
+
+  > ✅  **Weak 참조는 참조하는 인스턴스가 더 짧은 생명주기를 가질 때 사용한다.  nil 가능성을 내포하고 있다.  참조가 0 이 되면 Zeroing 이라는 작업을 통해 dangling pointer 가 아닌 nil 을 할당한다.**
+  >
+  > **✅ unowned는 참조하는 인스턴스가 현재 인스턴스의 생명주기보다 길거나 같을 때 사용한다.** 
+
 - ARC 대신 Manual Reference Count 방식으로 구현할 때 꼭 사용해야 하는 메서드들을 쓰고 역할을 설명하시오.
+
 - retain 과 assign 의 차이점을 설명하시오.
+
 - 순환 참조에 대하여 설명하시오.
+
 - 강한 순환 참조 (Strong Reference Cycle) 는 어떤 경우에 발생하는지 설명하시오.
+
 - 특정 객체를 autorelease 하기 위해 필요한 사항과 과정을 설명하시오.
+
 - Autorelease Pool을 사용해야 하는 상황을 두 가지 이상 예로 들어 설명하시오. 
+
 - 다음 코드를 실행하면 어떤 일이 발생할까 추측해서 설명하시오.
-Ball *ball = [[[[Ball alloc] init] autorelease] autorelease];
+  Ball *ball = [[[[Ball alloc] init] autorelease] autorelease];
 
 ## Functional Programming
 - 함수형 프로그래밍이 무엇인지 설명하시오.
